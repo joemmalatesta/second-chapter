@@ -43,30 +43,30 @@ export default function ProfilePage() {
 		<main>
 			<Navbar />
 			{status === "authenticated" || status === 'loading' ? (
-				<div className="mx-auto w-2/3">
-					<h1 className="text-2xl font-bold mb-4">Profile</h1>
+				<div className="px-80 bg-[#f0ead2] py-5">
+                    <div className="flex gap-5 my-8 items-center">
 
-					<p>Welcome {session?.user?.name}!</p>
-					<img src={session?.user?.image!} alt="" className="rounded-full w-10" />
+					<h1 className="text-2xl font-bold">{session?.user?.name}'s Second Chapter</h1>
 					<button
 						onClick={() => signOut()}
-						className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4"
-					>
+						className="bg-[#6c584c]/70 hover:bg-[#6c584c]/80 text-white font-bold py-2 px-4 rounded "
+                        >
 						Sign Out
 					</button>
-					<h3 className="font-medium">Listed Books</h3>
-					<div className="grid grid-cols-4">
+                        </div>
+					<h3 className="font-semibold text-2xl py-2 underline underline-offset-2">Listed</h3>
+					<div className="grid grid-cols-4 gap-2 gap-y-10">
 						{listedBooks.map((book) => (
-							<div key={book.isbn} className="w-40">
-								<img src={book.image} alt="" className="w-full" />
+							<div key={book.isbn} className="w-40 h-60">
+								<img src={book.image} alt="" className="w-full object-cover rounded-lg" />
 							</div>
 						))}
 					</div>
-					<h3 className="font-medium mt-10">Claimed Books</h3>
-					<div className="grid grid-cols-4">
+					<h3 className="mt-10 text-2xl font-bold underline underline-offset-2 py-2">Claimed</h3>
+					<div className="grid grid-cols-4 gap-2 gap-y-10">
 						{checkedOutBooks.map((book) => (
 							<div key={book.isbn} className="w-40">
-								<img src={book.image} alt="" className="w-full" />
+								<img src={book.image} alt="" className="w-full rounded-lg" />
 							</div>
 						))}
 					</div>

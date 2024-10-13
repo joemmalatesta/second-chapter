@@ -124,11 +124,17 @@ let NewBookModal = ({ isOpen, onClose }: NewBookModalProps) => {
 	return (
 		<div className="z-50 fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
 			<div className="bg-white p-6 rounded-lg max-w-md w-full">
-				<h2 className="text-2xl font-bold mb-4">Add New Book</h2>
+                <div className="flex justify-between items-center mb-3">
+
+				<h2 className="text-2xl font-bold">Add New Book</h2>
+                <button onClick={onClose} className="rounded-md bg-[#6c584c]/60 hover:bg-[#6c584c]/90 text-white p-2">
+						Close
+					</button>
+                </div>
 				<form className="flex" onSubmit={handleSearch}>
 					<label></label>
-					<input type="text" className="border border-black/80 rounded-l-md p-1 focus:outline-none" value={bookTitle} onChange={(e) => setBookTitle(e.target.value)}></input>
-					<button className="p-1 rounded-r-md bg-black/80 text-white" type="submit">Search</button>
+					<input type="text" className="border border-black/80 rounded-l-md p-2 focus:outline-none" value={bookTitle} onChange={(e) => setBookTitle(e.target.value)}></input>
+					<button className="p-2 rounded-r-md bg-[#6c584c] text-white" type="submit">Search</button>
 				</form>
 
 				{bookDetails && (
@@ -140,11 +146,8 @@ let NewBookModal = ({ isOpen, onClose }: NewBookModalProps) => {
 					</div>
 				)}
 				<div className="flex justify-between mt-4">
-					<button onClick={listBook} className={`${bookDetails ? "block" : "opacity-0 pointer-events-none "} rounded-md bg-black text-white px-4 py-2`}>
+					<button onClick={listBook} className={`${bookDetails ? "block" : "opacity-0 pointer-events-none "} rounded-md bg-[#6c584c] text-white px-4 py-2`}>
 						List Book
-					</button>
-					<button onClick={onClose} className="rounded-md bg-gray-300 text-black px-4 py-2">
-						Close
 					</button>
 				</div>
 			</div>

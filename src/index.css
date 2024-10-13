@@ -255,9 +255,10 @@ input[type="checkbox"] {
 .book-item {
   margin: 5px; /* Adjust the value for desired spacing */
   /* Optionally, add a background and padding to the item */
-  background: white;
+  background: var(--light-brown);
   border: 1px solid #ddd;
   border-radius: 5px;
+  color: white;
   overflow: hidden; /* To ensure the content fits within rounded corners */
 }
 

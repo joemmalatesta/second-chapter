@@ -60,38 +60,37 @@ const BooksList: React.FC = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await fetch(
-          `/api/books/filter?genres=${selectedGenres.join(",")}`
-        );
-        // const response = await fetch("/api/books");
+        const response = await fetch(`/api/books`);
         if (!response.ok) {
           throw new Error("Failed to fetch books");
         }
         const data = await response.json();
+        const filterBooks = (booksData: any[]) => {
+          return booksData.filter((book: any) => 
+            !book.checkedOutTo && 
+            (selectedGenres.length === 0 || selectedGenres.includes(book.genre.toLowerCase))
+          );
+        };
 
         if (isLocationAvailable) {
           navigator.geolocation.getCurrentPosition(
             (position) => {
               const booksWithDistance = calculateDistances(data, position);
-              const availableBooks = booksWithDistance.filter(
-                (book: any) => !book.checkedOutTo
-              );
-              const sortedBooks = availableBooks.sort(
+              const filteredBooks = filterBooks(booksWithDistance);
+              const sortedBooks = filteredBooks.sort(
                 (a: any, b: any) => a.distance - b.distance
               );
               setBooks(sortedBooks);
             },
             (error) => {
               console.error("Error getting location:", error);
-              const availableBooks = data.filter(
-                (book: any) => !book.checkedOutTo
-              );
-              setBooks(availableBooks);
+              const filteredBooks = filterBooks(data);
+              setBooks(filteredBooks);
             }
           );
         } else {
-          const availableBooks = data.filter((book: any) => !book.checkedOutTo);
-          setBooks(availableBooks);
+          const filteredBooks = filterBooks(data);
+          setBooks(filteredBooks);
         }
       } catch (error) {
         console.error("Error fetching books:", error);
@@ -189,35 +188,33 @@ const BooksList: React.FC = () => {
       </div>
       <div className="grid grid-cols-5">
         {books.map((book) => (
-          <article className="book-item w-52 rounded-lg">
-            <div className="book-div rounded-lg overflow-hidden w-44 h-64">
+          <article className="book-item w-52 rounded-lg flex flex-col justify-around items-center">
+            <div className="book-div rounded-lg overflow-hidden w-44 max-h-64">
               <img
                 src={book.image}
                 alt="Book cover"
-                className=" book-cover rounded-lg overflow-hidden scale-[102%]"
+                className=" book-cover rounded-lg overflow-hidden scale-[102%] max-h-44 object-fit"
               />
             </div>
-            <div className="book-details">
+            <div className="book-details w-full">
               <div className="book-info">
                 <h3 className="book-title overflow-ellipsis">{book.title}</h3>
                 <p className="book-author text-sm opacity-60 overflow-ellipsis">
                   {book.author}
+
                 </p>
                 <div className="w-full  flex justify-between items-center">
                   <div className=" flex gap-1 items-center text-sm">
-                    <img src="/pin.svg" alt="" className="distance-icon w-6" />
-                    <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" viewBox="0 0 256 256"><path d="M184,72a56,56,0,1,0-64,55.42V232a8,8,0,0,0,16,0V127.42A56.09,56.09,0,0,0,184,72Zm-56,40a40,40,0,1,1,40-40A40,40,0,0,1,128,112Z"></path></svg>                    <span>
                       {book.distance >= 0.1
                         ? book.distance
-                        : book
-                        ? "..."
                         : ".1"}
                       mi
                     </span>
                   </div>
                   <button
                     onClick={() => claimBook(book.isbn)}
-                    className=" underline claim-btn"
+                    className="bg-[#6c584c]/80 hover:bg-[#6c584c] p-2 rounded-lg "
                   >
                     Claim
                   </button>
