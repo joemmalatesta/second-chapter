@@ -5,18 +5,17 @@ import { useState } from "react";
 import LoginModal from "./components/loginModal";
 import Geolocation from "./components/Geolocation";
 import NewBookModal from "./components/NewBookModal";
-// import Map from "./components/Map";
+import Map from "./components/Map";
 import "../index.css"; // Import your global CSS here
 import Book from "@/models/Book";
 import BooksList from "./components/BooksList";
 import Link from "next/link";
 
 export default function Home() {
-	const [isNewBookModalOpen, setIsNewBookModalOpen] = useState(false);
+  const [isNewBookModalOpen, setIsNewBookModalOpen] = useState(false);
 
-	const openNewBookModal = () => setIsNewBookModalOpen(true);
-	const closeNewBookModal = () => setIsNewBookModalOpen(false);
-
+  const openNewBookModal = () => setIsNewBookModalOpen(true);
+  const closeNewBookModal = () => setIsNewBookModalOpen(false);
 
   return (
     <main>
@@ -131,6 +130,9 @@ export default function Home() {
                     </li>
                   </ul>
                 </div>
+              </div>
+              <div className="map">
+                <Map />
               </div>
             </aside>
             <section className="main-section">
