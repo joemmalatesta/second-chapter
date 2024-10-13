@@ -7,8 +7,6 @@ import Geolocation from "./components/Geolocation";
 import NewBookModal from "./components/NewBookModal";
 
 export default function Home() {
-
-
   return (
     <main>
       {/* <LoginModal /> */}
