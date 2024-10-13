@@ -1,0 +1,474 @@
+<style>
+.book-browsing-section { background-color: #f8f5e9; display: flex; flex-direction: column; overflow: hidden; }
+.hero-banner { display: flex; flex-direction: column; position: relative; min-height: 372px; width: 100%; padding: 5px 63px 74px 20px; }
+@media (max-width: 991px) { .hero-banner { max-width: 100%; padding-right: 20px; } }
+.hero-background { position: absolute; inset: 0; height: 100%; width: 100%; object-fit: cover; object-position: center; }
+.header-content { position: relative; display: flex; width: 100%; gap: 20px; color: #000; white-space: nowrap; text-align: center; flex-wrap: wrap; justify-content: space-between; }
+@media (max-width: 991px) { .header-content { max-width: 100%; white-space: initial; } }
+.logo-container { display: flex; }
+@media (max-width: 991px) { .logo-container { white-space: initial; } }
+.logo-image { aspect-ratio: 1.03; object-fit: contain; object-position: center; width: 128px; max-width: 100%; }
+.brand-name { align-self: start; display: flex; margin-top: 36px; gap: 9px; }
+@media (max-width: 991px) { .brand-name { white-space: initial; } }
+.brand-first { align-self: start; flex-grow: 1; font: 400 33px Dancing Script, sans-serif; }
+.brand-last { flex-basis: auto; font: 700 40px Gentium Book Plus, -apple-system, Roboto, Helvetica, sans-serif; }
+.user-login { display: flex; gap: 5px; margin: auto 0; font: 400 18px Abel, sans-serif; }
+@media (max-width: 991px) { .user-login { white-space: initial; } }
+.user-icon { aspect-ratio: 1; object-fit: contain; object-position: center; width: 25px; }
+.login-text { margin: auto 0; }
+.mission-statement { position: relative; align-self: end; display: flex; width: 492px; max-width: 100%; flex-direction: column; font-family: Antic Didone, sans-serif; color: #fff; font-weight: 400; margin: 25px 25px 0 0; }
+@media (max-width: 991px) { .mission-statement { margin-right: 10px; } }
+.mission-title { font-size: 30px; text-align: center; align-self: start; }
+.mission-text { font-size: 15px; margin-top: 18px; }
+@media (max-width: 991px) { .mission-text { max-width: 100%; } }
+.main-content { }
+@media (max-width: 991px) { .main-content { max-width: 100%; margin-right: 10px; } }
+.content-wrapper { gap: 20px; display: flex; }
+@media (max-width: 991px) { .content-wrapper { flex-direction: column; align-items: stretch; gap: 0px; } }
+.sidebar { display: flex; flex-direction: column; line-height: normal; width: 15%; margin-left: 0px; }
+@media (max-width: 991px) { .sidebar { width: 100%; } }
+.filter-box { border-radius: 2px; background-color: #dce1d0; display: flex; width: 100%; flex-direction: column; align-items: start; color: #000; font-weight: 400; text-align: center; margin: 0 auto; padding: 29px 22px 933px; }
+@media (max-width: 991px) { .filter-box { margin-top: 37px; padding: 0 20px 100px; } }
+.filter-title { font: 14px Abel, sans-serif; }
+.filter-divider { margin-top: 4px; width: 20px; height: 1px; border: 1px solid #000; }
+@media (max-width: 991px) { .filter-divider { margin-left: 7px; } }
+.filter-option { display: flex; margin-top: 20px; gap: 7px; font: 16px Economica, sans-serif; }
+@media (max-width: 991px) { .filter-option { margin-left: 9px; } }
+.filter-checkbox { border-radius: 2px; background-color: #dce1d0; align-self: start; display: flex; width: 11px; height: 11px; border: 2px solid #000; }
+.genre-filter { display: flex; margin-top: 49px; gap: 1px; }
+@media (max-width: 991px) { .genre-filter { margin-top: 40px; } }
+.genre-header { display: flex; flex-direction: column; align-items: start; white-space: nowrap; font: 14px Abel, sans-serif; }
+@media (max-width: 991px) { .genre-header { white-space: initial; } }
+.genre-title { align-self: stretch; }
+.genre-divider { margin-top: 4px; width: 14px; height: 1px; border: 1px solid #000; }
+.genre-icon { aspect-ratio: 0.05; object-fit: contain; object-position: center; width: 11px; margin-top: 21px; }
+@media (max-width: 991px) { .genre-icon { display: none; } }
+.genre-list { align-self: end; display: flex; margin-top: 35px; flex-direction: column; align-items: start; font: 16px Economica, sans-serif; }
+.genre-item { margin-top: 18px; }
+.main-section { display: flex; flex-direction: column; line-height: normal; width: 85%; margin-left: 20px; }
+@media (max-width: 991px) { .main-section { width: 100%; } }
+.search-container { display: flex; margin-top: 38px; width: 100%; flex-direction: column; }
+@media (max-width: 991px) { .search-container { max-width: 100%; margin-top: 40px; } }
+.search-bar { align-self: start; display: flex; gap: 12px; color: #000; text-align: center; font: 400 20px Abel, sans-serif; }
+.search-icon { aspect-ratio: 1; object-fit: contain; object-position: center; width: 32px; }
+.search-text { flex-basis: auto; margin: auto 0; }
+.book-grid { display: flex; margin-top: 36px; width: 100%; padding-left: 61px; flex-direction: column; align-items: start; }
+@media (max-width: 991px) { .book-grid { max-width: 100%; padding-left: 20px; } }
+.book-row { width: 100%; max-width: 906px; }
+@media (max-width: 991px) { .book-row { max-width: 100%; } }
+.book-row-content { gap: 20px; display: flex; }
+@media (max-width: 991px) { .book-row-content { flex-direction: column; align-items: stretch; gap: 0px; } }
+.book-column { display: flex; flex-direction: column; line-height: normal; width: 25%; margin-left: 0px; }
+@media (max-width: 991px) { .book-column { width: 100%; } }
+.book-item { display: flex; width: 100%; flex-direction: column; font-family: Abel, sans-serif; color: #000; font-weight: 400; text-align: center; }
+@media (max-width: 991px) { .book-item { margin-top: 40px; } }
+.book-cover { aspect-ratio: 0.75; object-fit: contain; object-position: center; width: 174px; }
+.book-details { display: flex; margin-top: 11px; gap: 32px; padding: 1px 0; }
+@media (max-width: 991px) { .book-details { margin-right: 5px; } }
+.book-info { display: flex; flex-direction: column; align-items: start; flex: 1; }
+.book-title { font-size: 16px; align-self: stretch; }
+.book-author { font-size: 12px; margin-top: 6px; }
+.book-distance { display: flex; margin-top: 4px; gap: 9px; font-size: 9px; }
+.distance-icon { aspect-ratio: 1; object-fit: contain; object-position: center; width: 100%; }
+.claim-button { background-color: #dce1d0; align-self: start; display: flex; flex-direction: column; font-size: 16px; white-space: nowrap; flex: 1; }
+@media (max-width: 991px) { .claim-button { white-space: initial; } }
+.claim-text { background-color: rgba(220, 225, 208, 0.49); padding: 9px 19px; border: 2px solid #fff; }
+@media (max-width: 991px) { .claim-text { white-space: initial; } }
+.footer-brand { align-self: end; display: flex; margin-top: 46px; gap: 2px; color: #000; white-space: nowrap; text-align: center; }
+@media (max-width: 991px) { .footer-brand { margin-top: 40px; white-space: initial; } }
+.footer-brand-first { font: 400 13px Dancing Script, sans-serif; }
+.footer-brand-last { font: 700 20px Gentium Book Plus, -apple-system, Roboto, Helvetica, sans-serif; }
+</style>
+
+<section class="book-browsing-section">
+  <header class="hero-banner">
+    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c8da7602e0a9f61aee3ad032dcfbb783d74d5a4f4f62f3589f503e89ef8e40b1?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="" class="hero-background" />
+    <div class="header-content">
+      <div class="logo-container">
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/082f1e6041eba8b410214d2f6e149632ad3ad0259b10608f262f5c39023080d8?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Second Chapter Logo" class="logo-image" />
+        <div class="brand-name">
+          <span class="brand-first">Second</span>
+          <span class="brand-last">Chapter</span>
+        </div>
+      </div>
+      <div class="user-login">
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1263ea886cd98ba376e1c06e00bee9eb98f97b7180e5df62354871b6413ca1fc?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="User icon" class="user-icon" />
+        <span class="login-text">Login</span>
+      </div>
+    </div>
+    <div class="mission-statement">
+      <h2 class="mission-title">OUR CAUSES</h2>
+      <p class="mission-text">
+        At Second Chapter, our mission is to give books a new life and foster a community of readers who share a passion for sustainability. We aim to reduce waste by rescuing books that would otherwise end up in landfills, offering them for free to individuals eager to expand their libraries. By reusing and recycling books, we not only promote environmental responsibility but also make literature accessible to everyone.
+      </p>
+    </div>
+  </header>
+  
+  <main class="main-content">
+    <div class="content-wrapper">
+      <aside class="sidebar">
+        <div class="filter-box">
+          <h3 class="filter-title">Location</h3>
+          <div class="filter-divider"></div>
+          <div class="filter-option">
+            <div class="filter-checkbox"></div>
+            <span>&lt; 5 mi</span>
+          </div>
+          <div class="filter-option">
+            <div class="filter-checkbox"></div>
+            <span>10 mi</span>
+          </div>
+          <div class="filter-option">
+            <div class="filter-checkbox"></div>
+            <span>25 mi</span>
+          </div>
+          <div class="filter-option">
+            <div class="filter-checkbox"></div>
+            <span>50 mi</span>
+          </div>
+          <div class="genre-filter">
+            <div class="genre-header">
+              <h3 class="genre-title">Genre</h3>
+              <div class="genre-divider"></div>
+              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/eb8a40fc137d4139d374628f74f053ae4eb3bee8fa0c86c9a91947b9e3ae110e?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="" class="genre-icon" />
+            </div>
+            <ul class="genre-list">
+              <li class="genre-item">Children's</li>
+              <li class="genre-item">Fantasy</li>
+              <li class="genre-item">Fiction</li>
+              <li class="genre-item">Historical Fiction</li>
+              <li class="genre-item">Mystery</li>
+              <li class="genre-item">Non-Fiction</li>
+              <li class="genre-item">Romance</li>
+              <li class="genre-item">Sci-Fi</li>
+            </ul>
+          </div>
+          <div class="filter-option">
+            <div class="filter-checkbox"></div>
+            <span>Thriller</span>
+          </div>
+        </div>
+      </aside>
+      
+      <section class="main-section">
+        <div class="search-container">
+          <div class="search-bar">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/3219361867156b40f47e4282855b0f72e161aeab4826f9fb6d1012a5d255f21c?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Search icon" class="search-icon" />
+            <span class="search-text">Browse for books...</span>
+          </div>
+        </div>
+        <div class="book-grid">
+          <div class="book-row">
+            <div class="book-row-content">
+              <div class="book-column">
+                <article class="book-item">
+                  <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ae658c32c35c53b03e4dfffd5145408e1f6eefcee590f557c4edac1036f64d38?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book cover" class="book-cover" />
+                  <div class="book-details">
+                    <div class="book-info">
+                      <h3 class="book-title">Book Title</h3>
+                      <p class="book-author">Author</p>
+                      <div class="book-distance">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a7d268b437a1c2bda78e28aada5b4ccf3ccb5312157768db23ed228ae18b4e32?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="" class="distance-icon" />
+                        <span>mi</span>
+                      </div>
+                    </div>
+                    <button class="claim-button">
+                      <span class="claim-text">Claim</span>
+                    </button>
+                  </div>
+                </article>
+              </div>
+              <div class="book-column">
+                <article class="book-item">
+                  <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1a94b70960ba75d4d8f011720429f464e8608c2a814be00320826313437d982a?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book cover" class="book-cover" />
+                  <div class="book-details">
+                    <div class="book-info">
+                      <h3 class="book-title">Book Title</h3>
+                      <p class="book-author">Author</p>
+                      <div class="book-distance">
+                        <div class="book-distance">
+  <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a7d268b437a1c2bda78e28aada5b4ccf3ccb5312157768db23ed228ae18b4e32?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="" class="distance-icon" />
+  <span>mi</span>
+</div>
+</div>
+<button class="claim-button">
+<span class="claim-text">Claim</span>
+</button>
+</div>
+</article>
+</div>
+<div class="book-column">
+<article class="book-item">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/8b44f4f8dcb2dbb7fa05c16e8e61de37c986f87756fd8eff5f060bf6bff37607?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book cover" class="book-cover" />
+<div class="book-details">
+<div class="book-info">
+<h3 class="book-title">Book Title</h3>
+<p class="book-author">Author</p>
+<div class="book-distance">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a7d268b437a1c2bda78e28aada5b4ccf3ccb5312157768db23ed228ae18b4e32?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="" class="distance-icon" />
+<span>mi</span>
+</div>
+</div>
+<button class="claim-button">
+<span class="claim-text">Claim</span>
+</button>
+</div>
+</article>
+</div>
+<div class="book-column">
+<article class="book-item">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4df0d82be5fcfd2573773b739b0d4910dc623f5f754982a0229c997fcdb72abd?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book cover" class="book-cover" />
+<div class="book-details">
+<div class="book-info">
+<h3 class="book-title">Book Title</h3>
+<p class="book-author">Author</p>
+<div class="book-distance">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a7d268b437a1c2bda78e28aada5b4ccf3ccb5312157768db23ed228ae18b4e32?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="" class="distance-icon" />
+<span>mi</span>
+</div>
+</div>
+<button class="claim-button">
+<span class="claim-text">Claim</span>
+</button>
+</div>
+</article>
+</div>
+</div>
+</div>
+<div class="book-row">
+<div class="book-row-content">
+<div class="book-column">
+<article class="book-item">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ae658c32c35c53b03e4dfffd5145408e1f6eefcee590f557c4edac1036f64d38?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book cover" class="book-cover" />
+<div class="book-details">
+<div class="book-info">
+<h3 class="book-title">Book Title</h3>
+<p class="book-author">Author</p>
+<div class="book-distance">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a7d268b437a1c2bda78e28aada5b4ccf3ccb5312157768db23ed228ae18b4e32?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="" class="distance-icon" />
+<span>mi</span>
+</div>
+</div>
+<button class="claim-button">
+<span class="claim-text">Claim</span>
+</button>
+</div>
+</article>
+</div>
+<div class="book-column">
+<article class="book-item">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1a94b70960ba75d4d8f011720429f464e8608c2a814be00320826313437d982a?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book cover" class="book-cover" />
+<div class="book-details">
+<div class="book-info">
+<h3 class="book-title">Book Title</h3>
+<p class="book-author">Author</p>
+<div class="book-distance">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a7d268b437a1c2bda78e28aada5b4ccf3ccb5312157768db23ed228ae18b4e32?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="" class="distance-icon" />
+<span>mi</span>
+</div>
+</div>
+<button class="claim-button">
+<span class="claim-text">Claim</span>
+</button>
+</div>
+</article>
+</div>
+<div class="book-column">
+<article class="book-item">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/8b44f4f8dcb2dbb7fa05c16e8e61de37c986f87756fd8eff5f060bf6bff37607?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book cover" class="book-cover" />
+<div class="book-details">
+<div class="book-info">
+<h3 class="book-title">Book Title</h3>
+<p class="book-author">Author</p>
+<div class="book-distance">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a7d268b437a1c2bda78e28aada5b4ccf3ccb5312157768db23ed228ae18b4e32?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="" class="distance-icon" />
+<span>mi</span>
+</div>
+</div>
+<button class="claim-button">
+<span class="claim-text">Claim</span>
+</button>
+</div>
+</article>
+</div>
+<div class="book-column">
+<article class="book-item">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4df0d82be5fcfd2573773b739b0d4910dc623f5f754982a0229c997fcdb72abd?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book cover" class="book-cover" />
+<div class="book-details">
+<div class="book-info">
+<h3 class="book-title">Book Title</h3>
+<p class="book-author">Author</p>
+<div class="book-distance">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a7d268b437a1c2bda78e28aada5b4ccf3ccb5312157768db23ed228ae18b4e32?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="" class="distance-icon" />
+<span>mi</span>
+</div>
+</div>
+<button class="claim-button">
+<span class="claim-text">Claim</span>
+</button>
+</div>
+</article>
+</div>
+</div>
+</div>
+<div class="book-row">
+<div class="book-row-content">
+<div class="book-column">
+<article class="book-item">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ae658c32c35c53b03e4dfffd5145408e1f6eefcee590f557c4edac1036f64d38?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book cover" class="book-cover" />
+<div class="book-details">
+<div class="book-info">
+<h3 class="book-title">Book Title</h3>
+<p class="book-author">Author</p>
+<div class="book-distance">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a7d268b437a1c2bda78e28aada5b4ccf3ccb5312157768db23ed228ae18b4e32?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="" class="distance-icon" />
+<span>mi</span>
+</div>
+</div>
+<button class="claim-button">
+<span class="claim-text">Claim</span>
+</button>
+</div>
+</article>
+</div>
+<div class="book-column">
+<article class="book-item">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1a94b70960ba75d4d8f011720429f464e8608c2a814be00320826313437d982a?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book cover" class="book-cover" />
+<div class="book-details">
+<div class="book-info">
+<h3 class="book-title">Book Title</h3>
+<p class="book-author">Author</p>
+<div class="book-distance">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a7d268b437a1c2bda78e28aada5b4ccf3ccb5312157768db23ed228ae18b4e32?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="" class="distance-icon" />
+<span>mi</span>
+</div>
+</div>
+<button class="claim-button">
+<span class="claim-text">Claim</span>
+</button>
+</div>
+</article>
+</div>
+<div class="book-column">
+<article class="book-item">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/8b44f4f8dcb2dbb7fa05c16e8e61de37c986f87756fd8eff5f060bf6bff37607?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book cover" class="book-cover" />
+<div class="book-details">
+<div class="book-info">
+<h3 class="book-title">Book Title</h3>
+<p class="book-author">Author</p>
+<div class="book-distance">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a7d268b437a1c2bda78e28aada5b4ccf3ccb5312157768db23ed228ae18b4e32?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="" class="distance-icon" />
+<span>mi</span>
+</div>
+</div>
+<button class="claim-button">
+<span class="claim-text">Claim</span>
+</button>
+</div>
+</article>
+</div>
+<div class="book-column">
+<article class="book-item">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4df0d82be5fcfd2573773b739b0d4910dc623f5f754982a0229c997fcdb72abd?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book cover" class="book-cover" />
+<div class="book-details">
+<div class="book-info">
+<h3 class="book-title">Book Title</h3>
+<p class="book-author">Author</p>
+<div class="book-distance">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a7d268b437a1c2bda78e28aada5b4ccf3ccb5312157768db23ed228ae18b4e32?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="" class="distance-icon" />
+<span>mi</span>
+</div>
+</div>
+<button class="claim-button">
+<span class="claim-text">Claim</span>
+</button>
+</div>
+</article>
+</div>
+</div>
+</div>
+<div class="book-row">
+<div class="book-row-content">
+<div class="book-column">
+<article class="book-item">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ae658c32c35c53b03e4dfffd5145408e1f6eefcee590f557c4edac1036f64d38?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book cover" class="book-cover" />
+<div class="book-details">
+<div class="book-info">
+<h3 class="book-title">Book Title</h3>
+<p class="book-author">Author</p>
+<div class="book-distance">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a7d268b437a1c2bda78e28aada5b4ccf3ccb5312157768db23ed228ae18b4e32?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="" class="distance-icon" />
+<span>mi</span>
+</div>
+</div>
+<button class="claim-button">
+<span class="claim-text">Claim</span>
+</button>
+</div>
+</article>
+</div>
+<div class="book-column">
+<article class="book-item">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1a94b70960ba75d4d8f011720429f464e8608c2a814be00320826313437d982a?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book cover" class="book-cover" />
+<div class="book-details">
+<div class="book-info">
+<h3 class="book-title">Book Title</h3>
+<p class="book-author">Author</p>
+<div class="book-distance">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a7d268b437a1c2bda78e28aada5b4ccf3ccb5312157768db23ed228ae18b4e32?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="" class="distance-icon" />
+<span>mi</span>
+</div>
+</div>
+<button class="claim-button">
+<span class="claim-text">Claim</span>
+</button>
+</div>
+</article>
+</div>
+<div class="book-column">
+<article class="book-item">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/8b44f4f8dcb2dbb7fa05c16e8e61de37c986f87756fd8eff5f060bf6bff37607?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book cover" class="book-cover" />
+<div class="book-details">
+<div class="book-info">
+<h3 class="book-title">Book Title</h3>
+<p class="book-author">Author</p>
+<div class="book-distance">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a7d268b437a1c2bda78e28aada5b4ccf3ccb5312157768db23ed228ae18b4e32?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="" class="distance-icon" />
+<span>mi</span>
+</div>
+</div>
+<button class="claim-button">
+<span class="claim-text">Claim</span>
+</button>
+</div>
+</article>
+</div>
+<div class="book-column">
+<article class="book-item">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4df0d82be5fcfd2573773b739b0d4910dc623f5f754982a0229c997fcdb72abd?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book cover" class="book-cover" />
+<div class="book-details">
+<div class="book-info">
+<h3 class="book-title">Book Title</h3>
+<p class="book-author">Author</p>
+<div class="book-distance">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a7d268b437a1c2bda78e28aada5b4ccf3ccb5312157768db23ed228ae18b4e32?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="" class="distance-icon" />
+<span>mi</span>
+</div>
+</div>
+<button class="claim-button">
+<span class="claim-text">Claim</span>
+</button>
+</div>
+</article>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<footer class="footer-brand">
+<span class="footer-brand-first">Second</span>
+<span class="footer-brand-last">Chapter</span>
+</footer>
+</section>
