@@ -109,7 +109,6 @@ const BooksList: React.FC = () => {
 
   return (
     <main>
-      <h2>Books List</h2>
       <div className="grid grid-cols-4">
         {books.map((book) => (
           <article className="book-item">

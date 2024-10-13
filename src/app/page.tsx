@@ -134,9 +134,7 @@ export default function Home() {
                     alt="Search icon"
                     className="search-icon"
                   />
-                  <span className="search-text">
-                    Browse <form action=""></form> books...
-                  </span>
+                  <span className="search-text">Browse Books...</span>
                 </div>
               </div>
 
