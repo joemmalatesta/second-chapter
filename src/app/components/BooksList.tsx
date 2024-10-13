@@ -120,7 +120,7 @@ const BooksList: React.FC = () => {
                 <div className="book-distance">
                   <div className="book-distance">
                     <img src="/pin.svg" alt="" className="distance-icon" />
-                    <span>mi</span>
+                    <span>{book.distance >= .1 ? book.distance: ".1"}mi</span>
                   </div>
                 </div>
                 <button
