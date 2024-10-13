@@ -64,7 +64,8 @@ const BooksList: React.FC = () => {
             }
           );
         } else {
-          setBooks(data);
+          const sortedBooks = data.sort((a: any, b: any) => a.distance - b.distance);
+          setBooks(sortedBooks);
         }
       } catch (error) {
         console.error("Error fetching books:", error);
@@ -74,22 +75,24 @@ const BooksList: React.FC = () => {
     fetchBooks();
   }, [isLocationAvailable, calculateDistances]);
 
-  // Claim book
+  // Claim book    
+  const { data: session } = useSession();
+
   function claimBook(isbn: string) {
-    const { data: session } = useSession();
 
     if (!session?.user?.email) {
       console.error("User not logged in");
       return;
     }
 
-    fetch(`/api/books/${isbn}`, {
+    fetch(`/api/books`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         checkedOutTo: session.user.email,
+        isbn
       }),
     })
       .then((response) => {
@@ -121,8 +124,8 @@ const BooksList: React.FC = () => {
                 <p className="book-author text-sm opacity-60 overflow-ellipsis">{book.author}</p>
                 <div className="w-full  flex justify-between items-center">
                   <div className=" flex gap-1 items-center text-sm">
-                    <img src="/pin.svg" alt="" className="distance-icon" />
-                    <span>{book.distance >= 0.1 ? book.distance : ".1"}mi</span>
+                    <img src="/pin.svg" alt="" className="distance-icon w-6" />
+                    <span>{book.distance >= 0.1 ? book.distance : book ? "..." :".1"}mi</span>
                   </div>
                 <button
                   onClick={() => claimBook(book.isbn)}

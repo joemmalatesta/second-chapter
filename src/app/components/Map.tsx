@@ -10,8 +10,8 @@ interface Point {
 
 const Map: React.FC = () => {
   const [points, setPoints] = useState<Point[]>([]);
-  //new code
   const [userLocation, setUserLocation] = useState<Point | null>(null);
+  const [map, setMap] = useState<L.Map | null>(null);
 
   useEffect(() => {
     const fetchPoints = async () => {
@@ -46,13 +46,24 @@ const Map: React.FC = () => {
     const defaultLng = -83.23072;
 
     // Initialize the map
-    const map = L.map("map", config).setView([defaultLat, defaultLng], zoom);
+    const mapInstance = L.map("map", config).setView([defaultLat, defaultLng], zoom);
 
     // Load and display tile layers
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    }).addTo(map);
+    }).addTo(mapInstance);
+
+    setMap(mapInstance);
+
+    // Cleanup function to remove the map on component unmount
+    return () => {
+      mapInstance.remove();
+    };
+  }, []); // Empty dependency array, run only once on mount
+
+  useEffect(() => {
+    if (!map) return;
 
     // Custom icon
     const customIcon = L.icon({
@@ -76,13 +87,13 @@ const Map: React.FC = () => {
         (position) => {
           const userLat = position.coords.latitude;
           const userLng = position.coords.longitude;
-          setUserLocation({ lat: userLat, long: userLng, cover: "" }); // No cover image needed
+          setUserLocation({ lat: userLat, long: userLng, cover: "" });
 
           // Create a special icon for the user's location
           const userIcon = L.icon({
-            iconUrl: "userpin.svg", // Path to your custom user location icon
-            iconSize: [40, 45], // Size of the icon
-            iconAnchor: [20, 45], // Adjust anchor point for better positioning
+            iconUrl: "userpin.svg",
+            iconSize: [40, 45],
+            iconAnchor: [20, 45],
             popupAnchor: [1, -34],
           });
 
@@ -99,12 +110,7 @@ const Map: React.FC = () => {
         }
       );
     }
-
-    // Cleanup function to remove the map on component unmount
-    return () => {
-      map.remove();
-    };
-  }, [points]); // Re-run effect when points change
+  }, [map, points]); // Run when map or points change
 
   return <div id="map" style={{ height: "500px", width: "100%" }} />;
 };

@@ -11,11 +11,11 @@ const Navbar = () => {
       className="hero-background absolute object-cover object-bottom h-32 w-full opacity-35 -z-10"
     />
     <div className="text-[#6c584c] flex justify-between w-11/12 mx-auto">
-      <Link href={"/"} className="flex items-center font-[20px]">
+      <Link href={"/"} className="flex items-center">
         <img
           src="https://cdn.builder.io/api/v1/image/assets/TEMP/082f1e6041eba8b410214d2f6e149632ad3ad0259b10608f262f5c39023080d8?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640"
           alt="Second Chapter Logo"
-          className="logo-image"
+          className="w-32 object-cover"
         />
         <div className="brand-name">
           <span className="brand-first">Second</span>

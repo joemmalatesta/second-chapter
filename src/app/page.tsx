@@ -33,7 +33,7 @@ export default function Home() {
 
   return (
     <main>
-      <section className="book-browsing-section">
+      <section className="">
         <Navbar />
         <section className="main-content w-full">
           <div className="content-wrapper w-full">
@@ -68,7 +68,7 @@ export default function Home() {
                     className="search-icon"
                   />
                   <div className="flex">
-                    <span className="search-text">Browse Books...</span>
+                    <span className="search-text pr-2">Browse Books</span>
                     <ul className="flex flex-wrap gap-1.5 genre-selections">
                       {genres.map((genre, index) => (
                         <li key={index} className="genre-item">
