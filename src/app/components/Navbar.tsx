@@ -1,7 +1,8 @@
 import Link from "next/link"
+import { useSession } from "next-auth/react";
 
 const Navbar = () => {
-
+    const { data : session  } = useSession()
     return (
     <header className="w-full">
     <img
@@ -27,7 +28,7 @@ const Navbar = () => {
           alt="User icon"
           className="user-icon w-10"
         />
-          <span className="login-text">Login</span>
+          <span className="login-text">{session?.user ? "Profile" : "Login" }</span>
       </Link>
     </div>
   </header>
