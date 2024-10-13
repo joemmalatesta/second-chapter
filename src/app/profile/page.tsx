@@ -3,6 +3,7 @@ import { Book } from "@/models/Book";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Navbar from "../components/Navbar";
 
 
 export default function ProfilePage() {
@@ -34,11 +35,11 @@ export default function ProfilePage() {
 	}, [session]);
 
 	return (
-		<div className="container mx-auto p-4">
-            <Link href={"/"}>home</Link>
+		<div className="mx-auto">
+            <Navbar />
 			<h1 className="text-2xl font-bold mb-4">Profile</h1>
 			<p>Welcome {session?.user?.name}!</p>
-			<img src={session?.user?.image!} alt="" className="rounded-full" />
+			<img src={session?.user?.image!} alt="" className="rounded-full w-10" />
 			<h3 className="font-medium">Listed Books</h3>
 			<div className="grid grid-cols-4">
 				{listedBooks.map((book) => (
