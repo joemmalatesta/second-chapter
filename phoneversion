@@ -1,0 +1,242 @@
+<style>
+.book-browsing-container { max-width: 480px; margin: 0 auto; background-color: #f8f5e9; overflow: hidden; }
+.header { display: flex; justify-content: space-between; padding: 38px 21px 0; position: relative; }
+.logo-wrapper { display: flex; }
+.logo { width: 108px; object-fit: contain; }
+.brand-name { display: flex; gap: 4px; margin-top: 43px; }
+.brand-first { font: 400 18px 'Dancing Script', sans-serif; }
+.brand-second { font: 700 25px 'Gentium Book Plus', -apple-system, Roboto, Helvetica, sans-serif; }
+.user-login { display: flex; gap: 7px; align-items: center; font: 400 16px Abel, sans-serif; }
+.user-icon { width: 25px; aspect-ratio: 1; object-fit: contain; }
+.mission-statement { color: #fff; margin: 27px 0 0 16px; font: 400 10px 'Antic Didone', sans-serif; position: relative; z-index: 1; }
+.background-image { position: absolute; inset: 0; height: 100%; width: 100%; object-fit: cover; }
+.filter-section { background-color: #dce1d0; padding: 10px 22px; font: 400 14px Abel, sans-serif; color: #000; text-align: center; }
+.filter-options { display: flex; gap: 100px; margin-bottom: 19px; }
+.filter-option { display: flex; flex-direction: column; align-items: center; }
+.filter-line { width: 20px; border-top: 1px solid #000; margin-top: 5px; }
+.genre-filters { display: flex; flex-wrap: wrap; gap: 20px; justify-content: flex-end; font: 400 14px Economica, sans-serif; }
+.genre-filter { display: flex; align-items: center; gap: 4px; }
+.genre-checkbox { width: 9px; height: 9px; border: 2px solid #000; border-radius: 2px; background-color: #dce1d0; }
+.book-search { display: flex; align-items: center; gap: 10px; font: 400 14px Abel, sans-serif; margin: 17px 0 0 16px; }
+.search-icon { width: 24px; aspect-ratio: 1.09; object-fit: contain; }
+.book-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 21px 35px; padding: 27px 32px 0 16px; }
+.book-item { display: flex; flex-direction: column; align-items: center; }
+.book-cover { width: 86px; aspect-ratio: 0.73; object-fit: contain; }
+.book-info { text-align: center; margin-top: 7px; }
+.book-title { font-size: 11px; margin-bottom: 4px; }
+.book-author { font-size: 8px; margin-bottom: 4px; }
+.book-distance { display: flex; align-items: center; gap: 4px; font-size: 6px; }
+.distance-icon { width: 9px; aspect-ratio: 1.5; object-fit: contain; }
+.claim-button { background-color: rgba(220, 225, 208, 0.49); border: 2px solid #fff; padding: 4px 11px; font-size: 8px; margin-top: 13px; }
+</style>
+
+<section class="book-browsing-container">
+  <header class="header">
+    <div class="logo-wrapper">
+      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d86161493acda9ee5ed88425db7cf2dcff5ce46497eee3b317485dc988248dd9?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Second Chapter Logo" class="logo">
+      <div class="brand-name">
+        <span class="brand-first">Second</span>
+        <span class="brand-second">Chapter</span>
+      </div>
+    </div>
+    <div class="user-login">
+      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2b54f5752b03abcd4c6c20b5586da21483b13bbcd61e8ecd95b8061c5810267d?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="User Icon" class="user-icon">
+      <span>Login</span>
+    </div>
+    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/cb28afef72c908dd893b2d6ded5c80e068b28b04cef653351bf6d2ca3b4124b0?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="" class="background-image">
+  </header>
+
+  <p class="mission-statement">Our mission is to give books a new life by rescuing them from landfills, promoting sustainability, and fostering a community where literature is freely shared and accessible to all.</p>
+
+  <section class="filter-section">
+    <div class="filter-options">
+      <div class="filter-option">
+        <span>Location</span>
+        <div class="filter-line"></div>
+      </div>
+      <div class="filter-option">
+        <span>Genre</span>
+        <div class="filter-line"></div>
+      </div>
+    </div>
+    <div class="genre-filters">
+      <label class="genre-filter">
+        <input type="checkbox" class="visually-hidden">
+        <span class="genre-checkbox"></span>
+        <span>Historical Fiction</span>
+      </label>
+      <label class="genre-filter">
+        <input type="checkbox" class="visually-hidden">
+        <span class="genre-checkbox"></span>
+        <span>Romance</span>
+      </label>
+      <label class="genre-filter">
+        <input type="checkbox" class="visually-hidden">
+        <span class="genre-checkbox"></span>
+        <span>Thriller</span>
+      </label>
+      <label class="genre-filter">
+        <input type="checkbox" class="visually-hidden">
+        <span class="genre-checkbox"></span>
+        <span>Non-Fiction</span>
+      </label>
+      <label class="genre-filter">
+        <input type="checkbox" class="visually-hidden">
+        <span class="genre-checkbox"></span>
+        <span>Sci-Fi</span>
+      </label>
+    </div>
+  </section>
+
+  <div class="book-search">
+    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4f3949f7a364117b8e1f8e960f12a09d3c34f427d28a02e96c79f5b625734755?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Search Icon" class="search-icon">
+    <span>Browse for books...</span>
+  </div>
+
+  <main class="book-grid">
+    <article class="book-item">
+      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d0eed9b6ff19c32e4321f3bbbe93ee41088709a6ff997fbc07566b42338840f9?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book Cover" class="book-cover">
+      <div class="book-info">
+        <h3 class="book-title">Book Title</h3>
+        <p class="book-author">Author</p>
+        <div class="book-distance">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/553a18c3d565a5337993d85282da0490af887dfd815da86377c4470af38837fd?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Distance Icon" class="distance-icon">
+          <span>mi</span>
+        </div>
+      </div>
+      <button class="claim-button">Claim</button>
+    </article>
+    <article class="book-item">
+      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9dfd81deeb732fd0d156d6aad03ce91eb9a32aba7251b8b7b6317307097d69b7?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book Cover" class="book-cover">
+      <div class="book-info">
+        <h3 class="book-title">Book Title</h3>
+        <p class="book-author">Author</p>
+        <div class="book-distance">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/553a18c3d565a5337993d85282da0490af887dfd815da86377c4470af38837fd?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Distance Icon" class="distance-icon">
+          <span>mi</span>
+        </div>
+      </div>
+      <button class="claim-button">Claim</button>
+    </article>
+    <article class="book-item">
+      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d0eed9b6ff19c32e4321f3bbbe93ee41088709a6ff997fbc07566b42338840f9?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book Cover" class="book-cover">
+      <div class="book-info">
+        <h3 class="book-title">Book Title</h3>
+        <p class="book-author">Author</p>
+        <div class="book-distance">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/553a18c3d565a5337993d85282da0490af887dfd815da86377c4470af38837fd?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Distance Icon" class="distance-icon">
+          <span>mi</span>
+        </div>
+      </div>
+      <button class="claim-button">Claim</button>
+    </article>
+    <article class="book-item">
+      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9dfd81deeb732fd0d156d6aad03ce91eb9a32aba7251b8b7b6317307097d69b7?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book Cover" class="book-cover">
+      <div class="book-info">
+        <h3 class="book-title">Book Title</h3>
+        <p class="book-author">Author</p>
+        <div class="book-distance">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/553a18c3d565a5337993d85282da0490af887dfd815da86377c4470af38837fd?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Distance Icon" class="distance-icon">
+          <span>mi</span>
+        </div>
+      </div>
+      <button class="claim-button">Claim</button>
+    </article>
+    <article class="book-item">
+      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d0eed9b6ff19c32e4321f3bbbe93ee41088709a6ff997fbc07566b42338840f9?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book Cover" class="book-cover">
+      <div class="book-info">
+        <h3 class="book-title">Book Title</h3>
+        <p class="book-author">Author</p>
+        <div class="book-distance">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/bf2bb18345c2fa7aa8f499c60dbc62b0bafda71dc07e7ee918fc7f77cf9f4569?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Distance Icon" class="distance-icon">
+          <span>mi</span>
+        </div>
+      </div>
+      <button class="claim-button">Claim</button>
+    </article>
+    <article class="book-item">
+      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9dfd81deeb732fd0d156d6aad03ce91eb9a32aba7251b8b7b6317307097d69b7?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book Cover" class="book-cover">
+      <div class="book-info">
+        <h3 class="book-title">Book Title</h3>
+        <p class="book-author">Author</p>
+        <div class="book-distance">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/bf2bb18345c2fa7aa8f499c60dbc62b0bafda71dc07e7ee918fc7f77cf9f4569?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Distance Icon" class="distance-icon">
+          <span>mi</span>
+        </div>
+      </div>
+      <button class="claim-button">Claim</button>
+    </article>
+    <article class="book-item">
+      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d0eed9b6ff19c32e4321f3bbbe93ee41088709a6ff997fbc07566b42338840f9?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book Cover" class="book-cover">
+      <div class="book-info">
+        <h3 class="book-title">Book Title</h3>
+        <p class="book-author">Author</p>
+        <div class="book-distance">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/bf2bb18345c2fa7aa8f499c60dbc62b0bafda71dc07e7ee918fc7f77cf9f4569?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Distance Icon" class="distance-icon">
+          <span>mi</span>
+        </div>
+      </div>
+      <button class="claim-button">Claim</button>
+    </article>
+    <article class="book-item">
+      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9dfd81deeb732fd0d156d6aad03ce91eb9a32aba7251b8b7b6317307097d69b7?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book Cover" class="book-cover">
+      <div class="book-info">
+        <h3 class="book-title">Book Title</h3>
+        <p class="book-author">Author</p>
+        <div class="book-distance">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/bf2bb18345c2fa7aa8f499c60dbc62b0bafda71dc07e7ee918fc7f77cf9f4569?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Distance Icon" class="distance-icon">
+          <span>mi</span>
+        </div>
+      </div>
+      <button class="claim-button">Claim</button>
+    </article>
+    <article class="book-item">
+      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9b3da052ec1b551e764a44ad1a677208756df1bede0de4f901463b79c18f4d5d?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book Cover" class="book-cover">
+      <div class="book-info">
+        <h3 class="book-title">Book Title</h3>
+        <p class="book-author">Author</p>
+        <div class="book-distance">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/553a18c3d565a5337993d85282da0490af887dfd815da86377c4470af38837fd?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Distance Icon" class="distance-icon">
+          <span>mi</span>
+        </div>
+      </div>
+      <button class="claim-button">Claim</button>
+    </article>
+    <article class="book-item">
+      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9b3da052ec1b551e764a44ad1a677208756df1bede0de4f901463b79c18f4d5d?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book Cover" class="book-cover">
+      <div class="book-info">
+        <h3 class="book-title">Book Title</h3>
+        <p class="book-author">Author</p>
+        <div class="book-distance">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/553a18c3d565a5337993d85282da0490af887dfd815da86377c4470af38837fd?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Distance Icon" class="distance-icon">
+          <span>mi</span>
+        </div>
+      </div>
+      <button class="claim-button">Claim</button>
+    </article>
+    <article class="book-item">
+      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9b3da052ec1b551e764a44ad1a677208756df1bede0de4f901463b79c18f4d5d?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book Cover" class="book-cover">
+      <div class="book-info">
+        <h3 class="book-title">Book Title</h3>
+        <p class="book-author">Author</p>
+        <div class="book-distance">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/bf2bb18345c2fa7aa8f499c60dbc62b0bafda71dc07e7ee918fc7f77cf9f4569?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Distance Icon" class="distance-icon">
+          <span>mi</span>
+        </div>
+      </div>
+      <button class="claim-button">Claim</button>
+    </article>
+    <article class="book-item">
+      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9b3da052ec1b551e764a44ad1a677208756df1bede0de4f901463b79c18f4d5d?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Book Cover" class="book-cover">
+      <div class="book-info">
+        <h3 class="book-title">Book Title</h3>
+        <p class="book-author">Author</p>
+        <div class="book-distance">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/bf2bb18345c2fa7aa8f499c60dbc62b0bafda71dc07e7ee918fc7f77cf9f4569?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640" alt="Distance Icon" class="distance-icon">
+          <span>mi</span>
+        </div>
+      </div>
+      <button class="claim-button">Claim</button>
+    </article>
+  </main>
+</section>
