@@ -135,7 +135,8 @@ const BooksList: React.FC = () => {
       })
       .then((data) => {
         console.log("Book claimed successfully:", data);
-        // You might want to update the local state or refetch books here
+        // Update the local state to remove the claimed book
+        setBooks((prevBooks) => prevBooks.filter((book) => book.isbn !== isbn));
       })
       .catch((error) => {
         console.error("Error claiming book:", error);
@@ -188,22 +189,22 @@ const BooksList: React.FC = () => {
       </div>
       <div className="grid grid-cols-5">
         {books.map((book) => (
-          <article className="book-item w-52 rounded-lg flex flex-col justify-around items-center">
-            <div className="book-div rounded-lg overflow-hidden w-44 max-h-64">
+          <article className="book-item w-52 rounded-lg flex flex-col justify-between items-center">
+            <div className="book-div rounded-lg overflow-hidden w-44">
               <img
                 src={book.image}
                 alt="Book cover"
                 className=" book-cover rounded-lg overflow-hidden scale-[102%] max-h-44 object-fit"
               />
             </div>
-            <div className="book-details w-full">
+            <div className=" w-full flex flex-col">
               <div className="book-info">
                 <h3 className="book-title overflow-ellipsis">{book.title}</h3>
-                <p className="book-author text-sm opacity-60 overflow-ellipsis">
+                <p className=" text-white text-sm opacity-60 overflow-ellipsis">
                   {book.author}
 
                 </p>
-                <div className="w-full  flex justify-between items-center">
+                <div className="w-full flex justify-between items-center">
                   <div className=" flex gap-1 items-center text-sm">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" viewBox="0 0 256 256"><path d="M184,72a56,56,0,1,0-64,55.42V232a8,8,0,0,0,16,0V127.42A56.09,56.09,0,0,0,184,72Zm-56,40a40,40,0,1,1,40-40A40,40,0,0,1,128,112Z"></path></svg>                    <span>
                       {book.distance >= 0.1
