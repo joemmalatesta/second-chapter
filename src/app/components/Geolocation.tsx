@@ -11,7 +11,7 @@ interface GeolocationData {
 const Geolocation: React.FC = () => {
   const [location, setLocation] = useState<GeolocationData | null>(null);
   const [error, setError] = useState<string | null>(null);
-
+    
   const updateGeolocation = async (geolocationData: GeolocationData) => {
     try {
       const response = await fetch('/api/user/updateGeolocation', {

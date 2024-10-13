@@ -23,6 +23,7 @@ let NewBookModal = () => {
 	let [location, setLocation] = useState<GeolocationData | null>(null);
 	let [error, setError] = useState<string | null>(null);
 
+    // GET CURRENT LOCATION
 	useEffect(() => {
 		if (!navigator.geolocation) {
 			setError("Geolocation is not supported by your browser");
@@ -55,14 +56,16 @@ let NewBookModal = () => {
 	let checkedOutTo = "haleetisler@gmail.com";
 	let ownerId = "670b22bfe524b61f60083d44";
 
-	// let title = "To Kill A Mockingbird";
 
+    // Get book details from google books api
 	let fetchBookDetails = async (title: string) => {
-		let response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=intitle:${title}`);
+		let response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=intitle:${title}&key=${process.env.NEXT_PUBLIC_BOOKS_KEY}`);
 		let data = await response.json();
 		return data.items[0] ? data.items[0] : null;
 	};
 
+
+    // Handle search clicked from input
 	let handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault(); // Prevent the default form submission behavior
 		try {
@@ -78,27 +81,20 @@ let NewBookModal = () => {
 				genre: fetchedBook.volumeInfo.categories ? fetchedBook.volumeInfo.categories.join(", ") : "Unknown",
 				thumbnail: fetchedBook.volumeInfo.imageLinks ? fetchedBook.volumeInfo.imageLinks.thumbnail : null
 			});
-            console.log(bookDetails)
+            console.log(bookDetails?.genre)
 		} catch (error) {
 			console.error("problem", error);
 		}
 	};
 
-	let sendemail = async () => {
-		let response = await fetch("/api/claim", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
-	};
 
-	let sendbooksdb = async () => {
+
+	let listBook = async () => {
 		if (!bookDetails) {
 			console.log("No book details to save.");
 			return;
 		}
-		console.log(bookDetails.identifier);
+        console.log(bookDetails.fetchedTitle)
 		let response = await fetch("/api/books", {
 			method: "POST",
 			headers: {
@@ -106,6 +102,10 @@ let NewBookModal = () => {
 			},
 			body: JSON.stringify({
 				isbn: bookDetails.identifier,
+                author: bookDetails.author,
+                genre: bookDetails.genre,
+                title: bookDetails.fetchedTitle,
+                image: bookDetails.thumbnail,
 				location,
 				bookState,
 				checkedOutTo,
@@ -131,15 +131,7 @@ let NewBookModal = () => {
 					{bookDetails.thumbnail && <Image src={bookDetails.thumbnail} alt={bookDetails.fetchedTitle} width={150} height={225} />}
 				</div>
 			)}
-
-			<br></br>
-			<br></br>
-			<button onClick={sendemail}>Email Me</button>
-
-			<br></br>
-			<br></br>
-			<br></br>
-			<button onClick={sendbooksdb}>Book Database</button>
+			<button onClick={listBook} className="m-4 rounded-md bg-black text-white px-2 p-1">List Book</button>
 		</main>
 	);
 };
