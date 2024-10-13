@@ -63,47 +63,64 @@ export default function Home() {
             <aside className="sidebar">
               <div className="filter-box">
                 <h3 className="filter-title">Location</h3>
-                <div className="filter-divider"></div>
                 <div className="filter-option">
-                  <div className="filter-checkbox"></div>
-                  <span>&lt; 5 mi</span>
+                  <input type="checkbox" id="filter1"></input>
+                  <label for="filter1">&lt; 5 mi</label>
                 </div>
                 <div className="filter-option">
-                  <div className="filter-checkbox"></div>
-                  <span>10 mi</span>
+                  <input type="checkbox" id="filter2"></input>
+                  <label for="filter2">10 mi</label>
                 </div>
                 <div className="filter-option">
-                  <div className="filter-checkbox"></div>
-                  <span>25 mi</span>
+                  <input type="checkbox" id="filter3"></input>
+                  <label for="filter3">25 mi</label>
                 </div>
                 <div className="filter-option">
-                  <div className="filter-checkbox"></div>
-                  <span>50 mi</span>
+                  <input type="checkbox" id="filter4"></input>
+                  <label for="filter4">50 mi</label>
                 </div>
                 <div className="genre-filter">
                   <div className="genre-header">
                     <h3 className="genre-title">Genre</h3>
-                    <div className="genre-divider"></div>
-                    <img
-                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/eb8a40fc137d4139d374628f74f053ae4eb3bee8fa0c86c9a91947b9e3ae110e?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640"
-                      alt=""
-                      className="genre-icon"
-                    />
                   </div>
                   <ul className="genre-list">
-                    <li className="genre-item">Children's</li>
-                    <li className="genre-item">Fantasy</li>
-                    <li className="genre-item">Fiction</li>
-                    <li className="genre-item">Historical Fiction</li>
-                    <li className="genre-item">Mystery</li>
-                    <li className="genre-item">Non-Fiction</li>
-                    <li className="genre-item">Romance</li>
-                    <li className="genre-item">Sci-Fi</li>
+                    <li className="genre-item">
+                      <input type="checkbox" id="genre1"></input>
+                      <label for="genre1">Children's</label>
+                    </li>
+                    <li className="genre-item">
+                      <input type="checkbox" id="genre2"></input>
+                      <label for="genre2">Fantasy</label>
+                    </li>
+                    <li className="genre-item">
+                      <input type="checkbox" id="genre3"></input>
+                      <label for="genre3">Fiction</label>
+                    </li>
+                    <li className="genre-item">
+                      <input type="checkbox" id="genre4"></input>
+                      <label for="genre4">Historical Fiction</label>
+                    </li>
+                    <li className="genre-item">
+                      <input type="checkbox" id="genre5"></input>
+                      <label for="genre5">Mystery</label>
+                    </li>
+                    <li className="genre-item">
+                      <input type="checkbox" id="genre6"></input>
+                      <label for="genre6">Non-Fiction</label>
+                    </li>
+                    <li className="genre-item">
+                      <input type="checkbox" id="genre7"></input>
+                      <label for="genre7">Romance</label>
+                    </li>
+                    <li className="genre-item">
+                      <input type="checkbox" id="genre8"></input>
+                      <label for="genre8">Sci-Fi</label>
+                    </li>
+                    <li className="genre-item">
+                      <input type="checkbox" id="genre9"></input>
+                      <label for="genre9">Thriller</label>
+                    </li>
                   </ul>
-                </div>
-                <div className="filter-option">
-                  <div className="filter-checkbox"></div>
-                  <span>Thriller</span>
                 </div>
               </div>
             </aside>
@@ -186,4 +203,3 @@ export default function Home() {
     </main>
   );
 }
-

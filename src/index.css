@@ -1,5 +1,5 @@
 /* Global styles */
-@import url("https://fonts.googleapis.com/css2?family=Antic+Didone&family=Dancing+Script:wght@400..700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Abel&family=Antic+Didone&family=Dancing+Script:wght@400..700&family=Economica:ital,wght@0,400;0,700;1,400;1,700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 :root {
   --beige: #f0ead2;
   --light-green: #dde5b6;
@@ -99,7 +99,7 @@ main {
 .sidebar {
   width: 250px; /* Adjust as needed */
   padding: 20px;
-  background-color: #f4f4f4;
+  background-color: var(--light-green);
 }
 
 .filter-box {
@@ -108,25 +108,17 @@ main {
 
 .filter-title {
   font-weight: bold;
-}
-
-.filter-divider {
-  height: 1px;
-  background: #ccc;
-  margin: 10px 0;
+  font-family: "Abel";
+  font-size: 20px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .filter-option {
+  font-family: "Abel";
   display: flex;
   align-items: center;
   margin-bottom: 10px;
-}
-
-.filter-checkbox {
-  width: 20px;
-  height: 20px;
-  border: 1px solid #ccc;
-  margin-right: 5px;
 }
 
 /* Genre Filter */
@@ -141,18 +133,16 @@ main {
 
 .genre-title {
   font-weight: bold;
+  font-family: "Abel";
+  font-size: 20px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .genre-divider {
   height: 1px;
   background: #ccc;
   margin: 10px 0;
-}
-
-.genre-icon {
-  width: 20px; /* Adjust as needed */
-  height: auto;
-  margin-left: 5px;
 }
 
 .genre-list {
@@ -162,6 +152,11 @@ main {
 
 .genre-item {
   margin: 5px 0;
+  font-family: "Abel";
+}
+
+input[type="checkbox"] {
+  margin-right: 10px; /* Adjust the value for desired spacing */
 }
 
 /* Main Section */
