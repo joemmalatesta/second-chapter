@@ -1,4 +1,5 @@
 /* Global styles */
+@import url("https://fonts.googleapis.com/css2?family=Antic+Didone&family=Dancing+Script:wght@400..700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 :root {
   --beige: #f0ead2;
   --light-green: #dde5b6;
@@ -27,35 +28,49 @@ main {
 .hero-background {
   width: 100%;
   height: auto;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .header-content {
   position: absolute;
-  top: 20px;
-  left: 20px;
-  color: white;
+  top: 0px;
+  left: 0px;
+  color: var(--brown);
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .logo-container {
   display: flex;
   align-items: center;
+  display: flex;
 }
 
 .logo-image {
-  width: 100px; /* Adjust as needed */
+  width: 150px; /* Adjust as needed */
   height: auto;
+  object-fit: fill;
 }
 
 .brand-name {
-  margin-left: 10px;
+  font-size: 25px;
+  /* this is the Second Chapter */
+  font-family: "Gentium";
+  font-weight: bold;
 }
 
 .brand-first {
   font-weight: bold;
+  /* this is Second */
+  font-family: "Dancing Script";
+  margin-right: 3px;
 }
 
 .user-login {
+  margin-right: 30px;
   display: flex;
   align-items: center;
 }

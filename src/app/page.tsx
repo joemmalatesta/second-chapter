@@ -40,7 +40,9 @@ export default function Home() {
                 alt="User icon"
                 className="user-icon"
               />
-              <span className="login-text">Login</span>
+              <a href="">
+                <span className="login-text">Login</span>
+              </a>
             </div>
           </div>
           <div className="mission-statement">
