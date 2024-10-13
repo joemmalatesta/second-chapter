@@ -1,7 +1,9 @@
 "use client";
 import { Book } from "@/models/Book";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
+
 
 export default function ProfilePage() {
 	const { status, data: session } = useSession();
@@ -33,6 +35,7 @@ export default function ProfilePage() {
 
 	return (
 		<div className="container mx-auto p-4">
+            <Link href={"/"}>home</Link>
 			<h1 className="text-2xl font-bold mb-4">Profile</h1>
 			<p>Welcome {session?.user?.name}!</p>
 			<img src={session?.user?.image!} alt="" className="rounded-full" />
