@@ -1,22 +1,59 @@
 "use client"; // This allows the component to use hooks
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-  //BOOK API
-  interface BookDetails {
-    fetchedTitle: string;
-    author: string;
-    genre: string;
-    thumbnail: string | null;
-    identifier: string;
-  }
+//LOCATION
+interface GeolocationData {
+  latitude: number;
+  longitude: number;
+  accuracy: number;
+}
 
-  const NewBookModal = () => {
+//BOOK API
+interface BookDetails {
+  fetchedTitle: string;
+  author: string;
+  genre: string;
+  thumbnail: string | null;
+  identifier: string;
+}
 
+const NewBookModal = () => {
+  const [location, setLocation] = useState<GeolocationData | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!navigator.geolocation) {
+      setError("Geolocation is not supported by your browser");
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setLocation({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          accuracy: position.coords.accuracy,
+        });
+      },
+      (error) => {
+        setError(`Error: ${error.message}`);
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0,
+      }
+    );
+  }, []);
 
   const [bookTitle, setBookTitle] = useState("");
   const [bookDetails, setBookDetails] = useState<BookDetails | null>(null);
+
+  const bookState = "new";
+  const checkedOutTo = "haleetisler@gmail.com";
+  const ownerId = "670b22bfe524b61f60083d44";
 
   // const title = "To Kill A Mockingbird";
 
@@ -70,16 +107,17 @@ import { useState } from "react";
       console.log("No book details to save.");
       return;
     }
-    const response = await fetch("/api/booksdb", {
+    const response = await fetch("/api/books", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         isbn: bookDetails.identifier,
-        title: bookDetails.fetchedTitle,
-        author: bookDetails.author,
-        genre: bookDetails.genre,
+        location,
+        bookState,
+        checkedOutTo,
+        ownerId,
       }),
     });
   };
