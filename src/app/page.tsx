@@ -38,26 +38,15 @@ export default function Home() {
         <section className="main-content w-full">
           <div className="content-wrapper w-full">
             <aside className="sidebar w-1/3">
-              <div className="filter-box">
-                <h3 className="filter-title">Location</h3>
-                <div className="filter-option">
-                  <input type="checkbox" id="filter1"></input>
-                  <label htmlFor="filter1">&lt; 5 mi</label>
-                </div>
-                <div className="filter-option">
-                  <input type="checkbox" id="filter2"></input>
-                  <label htmlFor="filter2">10 mi</label>
-                </div>
-                <div className="filter-option">
-                  <input type="checkbox" id="filter3"></input>
-                  <label htmlFor="filter3">25 mi</label>
-                </div>
-                <div className="filter-option">
-                  <input type="checkbox" id="filter4"></input>
-                  <label htmlFor="filter4">50 mi</label>
-                </div>
-              </div>
-              <Map />
+              <button
+                onClick={openNewBookModal}
+                className="w-full mt-4 add-book-btn bg-[#6c584c] text-white py-2 px-4 rounded-md mb-4 hover:bg-[#5a4a3f] transition-colors duration-300"
+              >
+                Add Book
+              </button>
+              <NewBookModal isOpen={isNewBookModalOpen} onClose={closeNewBookModal} />
+              
+              <Map opacity={isNewBookModalOpen ? 0.6 : 1} />
             </aside>
             <section className="main-section w-2/3">
               <div className="search-container">

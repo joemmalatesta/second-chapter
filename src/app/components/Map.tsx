@@ -8,7 +8,7 @@ interface Point {
   cover: string;
 }
 
-const Map: React.FC = () => {
+const Map: React.FC<{ opacity?: number }> = ({ opacity = 1 }) => {
   const [points, setPoints] = useState<Point[]>([]);
   const [userLocation, setUserLocation] = useState<Point | null>(null);
   const [map, setMap] = useState<L.Map | null>(null);
@@ -112,7 +112,7 @@ const Map: React.FC = () => {
     }
   }, [map, points]); // Run when map or points change
 
-  return <div id="map" style={{ height: "500px", width: "100%" }} />;
+  return <div id="map" style={{ height: "500px", width: "100%", opacity }} />;
 };
 
 export default Map;

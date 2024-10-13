@@ -56,16 +56,19 @@ const BooksList: React.FC = () => {
           navigator.geolocation.getCurrentPosition(
             (position) => {
               const booksWithDistance = calculateDistances(data, position);
-              setBooks(booksWithDistance);
+              const availableBooks = booksWithDistance.filter((book: any) => !book.checkedOutTo);
+              const sortedBooks = availableBooks.sort((a: any, b: any) => a.distance - b.distance);
+              setBooks(sortedBooks);
             },
             (error) => {
               console.error("Error getting location:", error);
-              setBooks(data);
+              const availableBooks = data.filter((book: any) => !book.checkedOutTo);
+              setBooks(availableBooks);
             }
           );
         } else {
-          const sortedBooks = data.sort((a: any, b: any) => a.distance - b.distance);
-          setBooks(sortedBooks);
+          const availableBooks = data.filter((book: any) => !book.checkedOutTo);
+          setBooks(availableBooks);
         }
       } catch (error) {
         console.error("Error fetching books:", error);
