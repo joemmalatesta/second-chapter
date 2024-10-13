@@ -9,8 +9,15 @@ import NewBookModal from "./components/NewBookModal";
 import "../index.css"; // Import your global CSS here
 import Book from "@/models/Book";
 import BooksList from "./components/BooksList";
+import Link from "next/link";
 
 export default function Home() {
+	const [isNewBookModalOpen, setIsNewBookModalOpen] = useState(false);
+
+	const openNewBookModal = () => setIsNewBookModalOpen(true);
+	const closeNewBookModal = () => setIsNewBookModalOpen(false);
+
+
   return (
     <main>
       {/* <LoginModal /> */}
@@ -42,7 +49,7 @@ export default function Home() {
                 alt="User icon"
                 className="user-icon"
               />
-              <a href="">
+              <a href="/profile">
                 <span className="login-text">Login</span>
               </a>
             </div>
@@ -136,9 +143,7 @@ export default function Home() {
                     alt="Search icon"
                     className="search-icon"
                   />
-                  <span className="search-text">
-                    Browse <form action=""></form> books...
-                  </span>
+                  <span className="search-text">Browse Books...</span>
                 </div>
               </div>
 

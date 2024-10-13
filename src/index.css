@@ -63,8 +63,8 @@ main {
   /* margin-top: 20px; */
   /* padding-right: 30px; */
   /* margin-right: 30rem; */
-  /* position:absolute; */
-  /* top:65%; */
+  /* position: absolute; */
+  /* top: 65%; */
   /* border: 1px solid pink; */
   /* left: 78%; */
   /* transform: translate(-60%, -78%); */
@@ -151,6 +151,7 @@ input[type="checkbox"] {
 .main-section {
   flex: 1;
   padding: 20px;
+  background-color: var(--beige);
 }
 
 .search-container {
@@ -161,17 +162,20 @@ input[type="checkbox"] {
   display: flex;
   align-items: center;
   padding: 10px;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
 }
 
 .search-icon {
-  width: 20px; /* Adjust as needed */
+  width: 30px; /* Adjust as needed */
   height: auto;
   margin-right: 10px;
 }
 
 .search-text {
-  color: #888;
+  color: var(--brown);
+  font-family: "Abel";
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 /* Book Grid */
@@ -231,6 +235,15 @@ input[type="checkbox"] {
   margin-right: 5px;
 }
 
+.book-item {
+  margin: 5px; /* Adjust the value for desired spacing */
+  /* Optionally, add a background and padding to the item */
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden; /* To ensure the content fits within rounded corners */
+}
+
 /* Claim Button */
 .claim-button {
   background-color: #007bff;
@@ -244,4 +257,3 @@ input[type="checkbox"] {
 .claim-button:hover {
   background-color: #0056b3;
 }
-

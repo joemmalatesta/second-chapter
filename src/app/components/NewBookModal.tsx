@@ -20,8 +20,13 @@ interface BookDetails {
 	identifier: string;
 }
 
-let NewBookModal = () => {
-    const {data: session} = useSession()
+interface NewBookModalProps {
+	isOpen: boolean;
+	onClose: () => void;
+}
+
+let NewBookModal = ({ isOpen, onClose }: NewBookModalProps) => {
+	const {data: session} = useSession()
 	let [location, setLocation] = useState<GeolocationData | null>(null);
 	let [error, setError] = useState<string | null>(null);
 
@@ -114,25 +119,37 @@ let NewBookModal = () => {
 		});
 	};
 
-	return (
-		<main>
-			<form onSubmit={handleSearch}>
-				<label>Search for a Book:</label>
-				<br></br>
-				<input type="text" value={bookTitle} onChange={(e) => setBookTitle(e.target.value)}></input>
-				<button type="submit">FIND IT</button>
-			</form>
+	if (!isOpen) return null;
 
-			{bookDetails && (
-				<div>
-					<h2>Book Title: {bookDetails.fetchedTitle}</h2>
-					<h3>Author: {bookDetails.author}</h3>
-					<h4>Genre: {bookDetails.genre}</h4>
-					{bookDetails.thumbnail && <Image src={bookDetails.thumbnail} alt={bookDetails.fetchedTitle} width={150} height={225} />}
+	return (
+		<div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+			<div className="bg-white p-6 rounded-lg max-w-md w-full">
+				<h2 className="text-2xl font-bold mb-4">Add New Book</h2>
+				<form onSubmit={handleSearch}>
+					<label>Search for a Book:</label>
+					<br></br>
+					<input type="text" value={bookTitle} onChange={(e) => setBookTitle(e.target.value)}></input>
+					<button type="submit">FIND IT</button>
+				</form>
+
+				{bookDetails && (
+					<div>
+						<h2>Book Title: {bookDetails.fetchedTitle}</h2>
+						<h3>Author: {bookDetails.author}</h3>
+						<h4>Genre: {bookDetails.genre}</h4>
+						{bookDetails.thumbnail && <Image src={bookDetails.thumbnail} alt={bookDetails.fetchedTitle} width={150} height={225} />}
+					</div>
+				)}
+				<div className="flex justify-between mt-4">
+					<button onClick={listBook} className="rounded-md bg-black text-white px-4 py-2">
+						List Book
+					</button>
+					<button onClick={onClose} className="rounded-md bg-gray-300 text-black px-4 py-2">
+						Close
+					</button>
 				</div>
-			)}
-			<button onClick={listBook} className="m-4 rounded-md bg-black text-white px-2 p-1">List Book</button>
-		</main>
+			</div>
+		</div>
 	);
 };
 
