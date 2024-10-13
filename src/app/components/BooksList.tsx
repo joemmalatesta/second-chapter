@@ -109,26 +109,28 @@ const BooksList: React.FC = () => {
 
   return (
     <main>
-      <div className="grid grid-cols-4">
+      <div className="grid grid-cols-5">
         {books.map((book) => (
-          <article className="book-item">
-            <img src={book.image} alt="Book cover" className="book-cover" />
+          <article className="book-item w-52 rounded-lg">
+            <div className="rounded-lg overflow-hidden w-44 h-64">
+            <img src={book.image} alt="Book cover" className=" book-cover rounded-lg overflow-hidden scale-[102%]" />
+            </div>
             <div className="book-details">
               <div className="book-info">
-                <h3 className="book-title">{book.title}</h3>
-                <p className="book-author">{book.author}</p>
-                <div className="book-distance">
-                  <div className="book-distance">
+                <h3 className="book-title overflow-ellipsis">{book.title}</h3>
+                <p className="book-author text-sm opacity-60 overflow-ellipsis">{book.author}</p>
+                <div className="w-full  flex justify-between items-center">
+                  <div className=" flex gap-1 items-center text-sm">
                     <img src="/pin.svg" alt="" className="distance-icon" />
                     <span>{book.distance >= .1 ? book.distance: ".1"}mi</span>
                   </div>
-                </div>
                 <button
                   onClick={() => claimBook(book.isbn)}
-                  className="claim-button text-center p-1 rounded"
+                  className=" underline"
                 >
-                  <span className="claim-text">Claim</span>
+                 Claim
                 </button>
+                </div>
               </div>
             </div>
           </article>
