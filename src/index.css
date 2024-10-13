@@ -1,0 +1,263 @@
+/* Global styles */
+@import url("https://fonts.googleapis.com/css2?family=Antic+Didone&family=Dancing+Script:wght@400..700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+:root {
+  --beige: #f0ead2;
+  --light-green: #dde5b6;
+  --green: #adc178;
+  --light-brown: #a98467;
+  --brown: #6c584c;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hero Banner */
+.hero-banner {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.hero-background {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.header-content {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  color: var(--brown);
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  display: flex;
+}
+
+.logo-image {
+  width: 150px; /* Adjust as needed */
+  height: auto;
+  object-fit: fill;
+}
+
+.brand-name {
+  font-size: 25px;
+  /* this is the Second Chapter */
+  font-family: "Gentium";
+  font-weight: bold;
+}
+
+.brand-first {
+  font-weight: bold;
+  /* this is Second */
+  font-family: "Dancing Script";
+  margin-right: 3px;
+}
+
+.user-login {
+  margin-right: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.user-icon {
+  width: 30px; /* Adjust as needed */
+  height: auto;
+  margin-right: 5px;
+}
+
+.mission-statement {
+  margin-top: 20px;
+}
+
+/* Main Content */
+.main-content {
+  display: flex;
+}
+
+.content-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px; /* Adjust as needed */
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+.filter-box {
+  margin-bottom: 20px;
+}
+
+.filter-title {
+  font-weight: bold;
+}
+
+.filter-divider {
+  height: 1px;
+  background: #ccc;
+  margin: 10px 0;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.filter-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  margin-right: 5px;
+}
+
+/* Genre Filter */
+.genre-filter {
+  margin-top: 20px;
+}
+
+.genre-header {
+  display: flex;
+  align-items: center;
+}
+
+.genre-title {
+  font-weight: bold;
+}
+
+.genre-divider {
+  height: 1px;
+  background: #ccc;
+  margin: 10px 0;
+}
+
+.genre-icon {
+  width: 20px; /* Adjust as needed */
+  height: auto;
+  margin-left: 5px;
+}
+
+.genre-list {
+  list-style: none;
+  padding: 0;
+}
+
+.genre-item {
+  margin: 5px 0;
+}
+
+/* Main Section */
+.main-section {
+  flex: 1;
+  padding: 20px;
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.search-icon {
+  width: 20px; /* Adjust as needed */
+  height: auto;
+  margin-right: 10px;
+}
+
+.search-text {
+  color: #888;
+}
+
+/* Book Grid */
+.book-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.book-row {
+  display: flex;
+  width: 100%;
+}
+
+.book-column {
+  flex: 1;
+  padding: 10px;
+}
+
+.book-item {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+}
+
+.book-cover {
+  width: 100%; /* Adjust as needed */
+  height: auto;
+}
+
+.book-details {
+  margin-top: 10px;
+}
+
+.book-info {
+  margin-bottom: 10px;
+}
+
+.book-title {
+  font-weight: bold;
+}
+
+.book-author {
+  color: #555;
+}
+
+.book-distance {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.distance-icon {
+  width: 20px; /* Adjust as needed */
+  height: auto;
+  margin-right: 5px;
+}
+
+/* Claim Button */
+.claim-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.claim-button:hover {
+  background-color: #0056b3;
+}
