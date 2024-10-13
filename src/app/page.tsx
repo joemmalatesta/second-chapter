@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import LoginModal from "./components/loginModal";
 
 export default function Home() {
   //BOOK API
@@ -85,6 +86,7 @@ export default function Home() {
   //start to test the book endpoints
   return (
     <main>
+      <LoginModal />
       <form onSubmit={handleSearch}>
         <label>Search for a Book:</label>
         <br></br>
