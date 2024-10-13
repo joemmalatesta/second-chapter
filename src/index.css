@@ -119,6 +119,10 @@ main {
   align-items: center;
 }
 
+/* .genre-selections {
+  border: 1px solid pink;
+} */
+
 .genre-title {
   font-weight: bold;
   font-family: "Abel";
@@ -168,7 +172,6 @@ input[type="checkbox"] {
 .search-icon {
   width: 30px; /* Adjust as needed */
   height: auto;
-  margin-right: 10px;
 }
 
 .search-text {
@@ -176,6 +179,7 @@ input[type="checkbox"] {
   font-family: "Abel";
   font-size: 2rem;
   font-weight: bold;
+  margin: 0 5px;
 }
 
 /* Book Grid */
