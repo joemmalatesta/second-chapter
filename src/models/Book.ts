@@ -1,15 +1,15 @@
 import mongoose, { Document, Schema } from "mongoose";
 
 export interface Book{
-  isbn: string;
+  isbn: string; //PK
   location: Object;
   bookState: string;
-  title: string;
+  title: string; 
   author: string;
   image: string;
   genre: string[];
-  checkedOutTo: string;
-  ownerId: mongoose.Types.ObjectId;
+  checkedOutTo: string; //email
+  ownerId: string; //email (FK)
 }
 
 const BookSchema: Schema = new Schema(
@@ -22,7 +22,7 @@ const BookSchema: Schema = new Schema(
     genre: { type: [String], required: true },
     image: {type: String, required: true},
     checkedOutTo: { type: String, required: false },
-    ownerId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+    ownerId: { type: String, required: true },
   },
   { timestamps: true }
 );

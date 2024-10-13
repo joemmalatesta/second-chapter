@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 
 //LOCATION
 interface GeolocationData {
@@ -20,6 +21,7 @@ interface BookDetails {
 }
 
 let NewBookModal = () => {
+    const {data: session} = useSession()
 	let [location, setLocation] = useState<GeolocationData | null>(null);
 	let [error, setError] = useState<string | null>(null);
 
@@ -53,8 +55,7 @@ let NewBookModal = () => {
 	let [bookDetails, setBookDetails] = useState<BookDetails | null>(null);
 
 	let bookState = "new";
-	let checkedOutTo = "haleetisler@gmail.com";
-	let ownerId = "670b22bfe524b61f60083d44";
+	let ownerId = "";
 
 
     // Get book details from google books api
@@ -108,8 +109,7 @@ let NewBookModal = () => {
                 image: bookDetails.thumbnail,
 				location,
 				bookState,
-				checkedOutTo,
-				ownerId,
+                ownerId: session?.user?.email,
 			}),
 		});
 	};
