@@ -56,6 +56,12 @@ main {
   margin-right: 5px;
 }
 
+.full-height {
+  height: 100vh; /* 100% of the viewport height */
+  background-color: var(--beige); /* Beige color */
+  padding-top: 3rem;
+}
+
 .mission-statement {
   /* font-size: 16px; */
   /* font-family: "Antic Didone"; */
@@ -149,6 +155,10 @@ main {
 
 input[type="checkbox"] {
   margin-right: 10px; /* Adjust the value for desired spacing */
+}
+
+.profile-subtitle {
+  font-size: 1.7rem;
 }
 
 /* Main Section */

@@ -6,16 +6,15 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { signIn, signOut } from "next-auth/react";
 import LoginModal from "../components/loginModal";
+import "../../index.css";
 
 export default function ProfilePage() {
-	const { status, data: session } = useSession();
-	const [checkedOutBooks, setCheckedOutBooks] = useState<Book[]>([]);
-	const [listedBooks, setListedBooks] = useState<Book[]>([]);
+    const { status, data: session } = useSession();
+    const [checkedOutBooks, setCheckedOutBooks] = useState<Book[]>([]);
+    const [listedBooks, setListedBooks] = useState<Book[]>([]);
 
-	useEffect(() => {
+    useEffect(() => {
         if (status === 'authenticated') {
-
-            
             const fetchBooks = async () => {
                 try {
                     const response = await fetch("/api/books");
@@ -34,46 +33,52 @@ export default function ProfilePage() {
                     console.error("Error fetching books:", error);
                 }
             };
-            
             fetchBooks();
         }
-	}, [session]);
+    }, [session, status]);
 
-	return (
+    return (
 		<main>
-			<Navbar />
-			{status === "authenticated" || status === 'loading' ? (
-				<div className="mx-auto w-2/3">
-					<h1 className="text-2xl font-bold mb-4">Profile</h1>
+            <Navbar />
+            {status === "authenticated" || status === "loading" ? (
+				<div className=" full-height px-80">
+					<h1 className="text-3xl font-bold mb-4">Profile</h1>
+                    <div className="flex items-center space-x-4 mt-6">
+   					 <img src={session?.user?.image!} alt="" className="rounded-full w-10" />
+  					  <p>Welcome {session?.user?.name}!</p>
+					</div>
+                    <button
+                        onClick={() => signOut()}
+                        className="bg-[#A98467] hover:bg-[#8B4513] text-[#FFFFFF] font-bold py-2 px-4 rounded mt-4"
+                    >
+                        Sign Out
+                    </button>
 
-					<p>Welcome {session?.user?.name}!</p>
-					<img src={session?.user?.image!} alt="" className="rounded-full w-10" />
-					<button
-						onClick={() => signOut()}
-						className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4"
-					>
-						Sign Out
-					</button>
-					<h3 className="font-medium">Listed Books</h3>
-					<div className="grid grid-cols-4">
-						{listedBooks.map((book) => (
-							<div key={book.isbn} className="w-40">
-								<img src={book.image} alt="" className="w-full" />
-							</div>
-						))}
-					</div>
-					<h3 className="font-medium mt-10">Claimed Books</h3>
-					<div className="grid grid-cols-4">
-						{checkedOutBooks.map((book) => (
-							<div key={book.isbn} className="w-40">
-								<img src={book.image} alt="" className="w-full" />
-							</div>
-						))}
-					</div>
-				</div>
-			) : (
-				<LoginModal />
-			)}
-		</main>
-	);
+					<div className="mb-6"></div>
+
+                    {/* Listed Books */}
+                    <h2 className="profile-subtitle">Listed Books</h2>
+                    <div className="grid grid-cols-4">
+                        {listedBooks.map((book) => (
+                            <div key={book.isbn} className="w-40">
+                                <img src={book.image} alt="" className="w-full" />
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Claimed Books */}
+                    <h3 className="profile-subtitle mt-10">Claimed Books</h3>
+                    <div className="grid grid-cols-4">
+                        {checkedOutBooks.map((book) => (
+                            <div key={book.isbn} className="w-40">
+                                <img src={book.image} alt="" className="w-full" />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            ) : (
+                <LoginModal />
+            )}
+        </main>
+    );
 }
