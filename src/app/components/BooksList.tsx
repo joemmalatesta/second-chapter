@@ -3,11 +3,25 @@ import React, { useEffect, useState, useCallback } from "react";
 import { Book } from "@/models/Book";
 import L from "leaflet";
 import { useSession } from "next-auth/react";
+import "../../index.css";
 
 const BooksList: React.FC = () => {
+  const genres: string[] = [
+    "Children's",
+    "Fantasy",
+    "Fiction",
+    "Historical Fiction",
+    "Mystery",
+    "Non-fiction",
+    "Romance",
+    "Sci-Fi",
+    "Thriller",
+  ];
+
   const [books, setBooks] = useState<any[]>([]);
   const [isLocationAvailable, setIsLocationAvailable] =
     useState<boolean>(false);
+  const [selectedGenres, setSelectedGenres] = useState<string[]>([]); //new
 
   const calculateDistances = useCallback(
     (booksData: any[], position: GeolocationPosition) => {
@@ -46,7 +60,10 @@ const BooksList: React.FC = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await fetch("/api/books");
+        const response = await fetch(
+          `/api/books/filter?genres=${selectedGenres.join(",")}`
+        );
+        // const response = await fetch("/api/books");
         if (!response.ok) {
           throw new Error("Failed to fetch books");
         }
@@ -56,13 +73,19 @@ const BooksList: React.FC = () => {
           navigator.geolocation.getCurrentPosition(
             (position) => {
               const booksWithDistance = calculateDistances(data, position);
-              const availableBooks = booksWithDistance.filter((book: any) => !book.checkedOutTo);
-              const sortedBooks = availableBooks.sort((a: any, b: any) => a.distance - b.distance);
+              const availableBooks = booksWithDistance.filter(
+                (book: any) => !book.checkedOutTo
+              );
+              const sortedBooks = availableBooks.sort(
+                (a: any, b: any) => a.distance - b.distance
+              );
               setBooks(sortedBooks);
             },
             (error) => {
               console.error("Error getting location:", error);
-              const availableBooks = data.filter((book: any) => !book.checkedOutTo);
+              const availableBooks = data.filter(
+                (book: any) => !book.checkedOutTo
+              );
               setBooks(availableBooks);
             }
           );
@@ -76,13 +99,20 @@ const BooksList: React.FC = () => {
     };
 
     fetchBooks();
-  }, [isLocationAvailable, calculateDistances]);
+  }, [isLocationAvailable, calculateDistances, selectedGenres]);
 
-  // Claim book    
+  const handleGenreChange = (genre: string) => {
+    if (selectedGenres.includes(genre)) {
+      setSelectedGenres(selectedGenres.filter((g) => g !== genre));
+    } else {
+      setSelectedGenres([...selectedGenres, genre]);
+    }
+  };
+
+  // Claim book
   const { data: session } = useSession();
 
   function claimBook(isbn: string) {
-
     if (!session?.user?.email) {
       console.error("User not logged in");
       return;
@@ -95,7 +125,7 @@ const BooksList: React.FC = () => {
       },
       body: JSON.stringify({
         checkedOutTo: session.user.email,
-        isbn
+        isbn,
       }),
     })
       .then((response) => {
@@ -115,27 +145,82 @@ const BooksList: React.FC = () => {
 
   return (
     <main>
+      <div className="search-container">
+        <div className="search-bar">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/3219361867156b40f47e4282855b0f72e161aeab4826f9fb6d1012a5d255f21c?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640"
+            alt="Search icon"
+            className="search-icon"
+          />
+          <div className="flex">
+            <span className="search-text pr-2">Browse Books</span>
+            <ul className="flex flex-wrap gap-1.5 genre-selections">
+              {genres.map((genre, index) => (
+                <li key={index} className="genre-item">
+                  <input
+                    type="checkbox"
+                    id={`genre${index}`}
+                    className="hidden"
+                    onChange={() => {
+                      handleGenreChange(genre);
+                      //   if (selectedGenres.includes(genre)) {
+                      //     setSelectedGenres(
+                      //       selectedGenres.filter((g) => g !== genre)
+                      //     );
+                      //   } else {
+                      //     setSelectedGenres([...selectedGenres, genre]);
+                      //   }
+                    }}
+                    // checked={selectedGenres.includes(genre)}
+                  />
+                  <label
+                    htmlFor={`genre${index}`}
+                    className={`inline-block px-4 py-2 rounded-full border border-gray-300 cursor-pointer transition-colors duration-200 ease-in-out hover:bg-gray-100 ${
+                      selectedGenres.includes(genre) ? "bg-gray-200" : ""
+                    }`}
+                  >
+                    {genre}
+                  </label>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
       <div className="grid grid-cols-5">
         {books.map((book) => (
           <article className="book-item w-52 rounded-lg">
-            <div className="rounded-lg overflow-hidden w-44 h-64">
-            <img src={book.image} alt="Book cover" className=" book-cover rounded-lg overflow-hidden scale-[102%]" />
+            <div className="book-div rounded-lg overflow-hidden w-44 h-64">
+              <img
+                src={book.image}
+                alt="Book cover"
+                className=" book-cover rounded-lg overflow-hidden scale-[102%]"
+              />
             </div>
             <div className="book-details">
               <div className="book-info">
                 <h3 className="book-title overflow-ellipsis">{book.title}</h3>
-                <p className="book-author text-sm opacity-60 overflow-ellipsis">{book.author}</p>
+                <p className="book-author text-sm opacity-60 overflow-ellipsis">
+                  {book.author}
+                </p>
                 <div className="w-full  flex justify-between items-center">
                   <div className=" flex gap-1 items-center text-sm">
                     <img src="/pin.svg" alt="" className="distance-icon w-6" />
-                    <span>{book.distance >= 0.1 ? book.distance : book ? "..." :".1"}mi</span>
+                    <span>
+                      {book.distance >= 0.1
+                        ? book.distance
+                        : book
+                        ? "..."
+                        : ".1"}
+                      mi
+                    </span>
                   </div>
-                <button
-                  onClick={() => claimBook(book.isbn)}
-                  className=" underline"
-                >
-                 Claim
-                </button>
+                  <button
+                    onClick={() => claimBook(book.isbn)}
+                    className=" underline claim-btn"
+                  >
+                    Claim
+                  </button>
                 </div>
               </div>
             </div>

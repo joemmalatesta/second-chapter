@@ -13,20 +13,20 @@ import Link from "next/link";
 import Navbar from "./components/Navbar";
 
 export default function Home() {
-  const genres: string[] = [
-    "Children's",
-    "Fantasy",
-    "Fiction",
-    "Historical Fiction",
-    "Mystery",
-    "Non-fiction",
-    "Romance",
-    "Sci-Fi",
-    "Thriller",
-  ];
+  // const genres: string[] = [
+  //   "Children's",
+  //   "Fantasy",
+  //   "Fiction",
+  //   "Historical Fiction",
+  //   "Mystery",
+  //   "Non-fiction",
+  //   "Romance",
+  //   "Sci-Fi",
+  //   "Thriller",
+  // ];
 
   const [isNewBookModalOpen, setIsNewBookModalOpen] = useState(false);
-  const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
+  // const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
 
   const openNewBookModal = () => setIsNewBookModalOpen(true);
   const closeNewBookModal = () => setIsNewBookModalOpen(false);
@@ -44,12 +44,15 @@ export default function Home() {
               >
                 Add Book
               </button>
-              <NewBookModal isOpen={isNewBookModalOpen} onClose={closeNewBookModal} />
-              
+              <NewBookModal
+                isOpen={isNewBookModalOpen}
+                onClose={closeNewBookModal}
+              />
+
               <Map opacity={isNewBookModalOpen ? 0.6 : 1} />
             </aside>
             <section className="main-section w-2/3">
-              <div className="search-container">
+              {/* <div className="search-container">
                 <div className="search-bar">
                   <img
                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/3219361867156b40f47e4282855b0f72e161aeab4826f9fb6d1012a5d255f21c?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640"
@@ -91,7 +94,7 @@ export default function Home() {
                     </ul>
                   </div>
                 </div>
-              </div>
+              </div> */}
               <BooksList />
             </section>
           </div>
