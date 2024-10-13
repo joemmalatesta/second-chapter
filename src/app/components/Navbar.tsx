@@ -27,12 +27,11 @@ const Navbar = () => {
           className="flex flex-col justify-center items-center"
         >
           <img
-            src="/user-circle.svg
-          "
+            src={session?.user ? session?.user.image! :"/user-circle.svg"}
             alt="User icon"
-            className="user-icon w-10"
+            className={`user-icon rounded-full w-10`}
           />
-          <span className="login-text">
+          <span className={`user-icon rounded-full ${session?.user ? 'hidden' : 'block'}`}>
             {session?.user ? "Profile" : "Login"}
           </span>
         </Link>
