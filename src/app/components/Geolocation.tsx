@@ -1,6 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import mapboxgl from 'mapbox-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 interface GeolocationData {
   latitude: number;
@@ -11,6 +13,8 @@ interface GeolocationData {
 const Geolocation: React.FC = () => {
   const [location, setLocation] = useState<GeolocationData | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const mapContainer = useRef<HTMLDivElement>(null);
+  const map = useRef<mapboxgl.Map | null>(null);
 
   const updateGeolocation = async (geolocationData: GeolocationData) => {
     try {
@@ -40,11 +44,28 @@ const Geolocation: React.FC = () => {
 
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        setLocation({
+        const newLocation = {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
           accuracy: position.coords.accuracy,
-        });
+        };
+        setLocation(newLocation);
+
+        // Initialize map after getting location
+        if (mapContainer.current && !map.current) {
+          mapboxgl.accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
+          map.current = new mapboxgl.Map({
+            container: mapContainer.current,
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [newLocation.longitude, newLocation.latitude],
+            zoom: 14
+          });
+
+          // Add marker for current location
+          new mapboxgl.Marker()
+            .setLngLat([newLocation.longitude, newLocation.latitude])
+            .addTo(map.current);
+        }
       },
       (error) => {
         setError(`Error: ${error.message}`);
@@ -72,6 +93,7 @@ const Geolocation: React.FC = () => {
       <p>Latitude: {location.latitude.toFixed(6)}</p>
       <p>Longitude: {location.longitude.toFixed(6)}</p>
       <p>Accuracy: {location.accuracy.toFixed(2)} meters</p>
+      <div ref={mapContainer} className='outline h-96 w-full' />
     </div>
   );
 };
