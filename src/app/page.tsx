@@ -16,13 +16,13 @@ export default function Home() {
       <NewBookModal /> */}
       {/* <Map /> */}
       <section className="book-browsing-section">
-        <header className="hero-banner">
-          <img
+        <header className="w-full h-[427px]">
+          {/* <img
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/c8da7602e0a9f61aee3ad032dcfbb783d74d5a4f4f62f3589f503e89ef8e40b1?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640"
             alt=""
             className="hero-background"
-          />
-          <div className="header-content">
+          /> */}
+          <div className="text-[#6c584c] font-[20px] flex flex-col justify-between w-full">
             <div className="logo-container">
               <img
                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/082f1e6041eba8b410214d2f6e149632ad3ad0259b10608f262f5c39023080d8?placeholderIfAbsent=true&apiKey=61c5806b97e2479f978f0dd7f873e640"
@@ -46,16 +46,18 @@ export default function Home() {
             </div>
           </div>
           <div className="mission-statement">
-            <h2 className="mission-title">OUR CAUSES</h2>
-            <p className="mission-text">
-              At Second Chapter, our mission is to give books a new life and
-              foster a community of readers who share a passion for
-              sustainability. We aim to reduce waste by rescuing books that
-              would otherwise end up in landfills, offering them for free to
-              individuals eager to expand their libraries. By reusing and
-              recycling books, we not only promote environmental responsibility
-              but also make literature accessible to everyone.
-            </p>
+            <div>
+              <h2 className="mission-title">OUR CAUSES</h2>
+              <p className="mission-text">
+                At Second Chapter, our mission is to give books a new life and
+                foster a community of readers who share a passion for
+                sustainability. We aim to reduce waste by rescuing books that
+                would otherwise end up in landfills, offering them for free to
+                individuals eager to expand their libraries. By reusing and
+                recycling books, we not only promote environmental responsibility
+                but also make literature accessible to everyone.
+              </p>
+            </div>
           </div>
         </header>
         <section className="main-content">
