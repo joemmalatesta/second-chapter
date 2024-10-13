@@ -131,9 +131,7 @@ let NewBookModal = ({ isOpen, onClose }: NewBookModalProps) => {
 						Close
 					</button>
                 </div>
-				<form className="flex" onSubmit={handleSearch}>
-					<label></label>
-					<input type="text" className="border border-black/80 rounded-l-md p-2 focus:outline-none" value={bookTitle} onChange={(e) => setBookTitle(e.target.value)}></input>
+				<form className="flex w-full" onSubmit={handleSearch}>					<input type="text" className="border border-black/80 rounded-l-md p-2 focus:outline-none" value={bookTitle} onChange={(e) => setBookTitle(e.target.value)}></input>
 					<button className="p-2 rounded-r-md bg-[#6c584c] text-white" type="submit">Search</button>
 				</form>
 
@@ -146,7 +144,7 @@ let NewBookModal = ({ isOpen, onClose }: NewBookModalProps) => {
 					</div>
 				)}
 				<div className="flex justify-between mt-4">
-					<button onClick={listBook} className={`${bookDetails ? "block" : "opacity-0 pointer-events-none "} rounded-md bg-[#6c584c] text-white px-4 py-2`}>
+					<button onClick={listBook} className={`${bookDetails ? "block" : "hidden "} rounded-md bg-[#6c584c] text-white px-4 py-2`}>
 						List Book
 					</button>
 				</div>
